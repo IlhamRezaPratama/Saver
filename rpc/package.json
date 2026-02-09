@@ -1,0 +1,23 @@
+{
+  "name": "discord-rpc-button",
+  "version": "1.0.0",
+  "description": "Discord Rich Presence with buttons",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "discord",
+    "rpc",
+    "rich-presence"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "discord-rpc": "^4.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
