@@ -1,4 +1,5 @@
 import axios from 'axios'
+import type { AxiosError, InternalAxiosRequestConfig, AxiosResponse } from 'axios'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
 
@@ -12,22 +13,22 @@ const api = axios.create({
 
 // Add token to requests if available
 api.interceptors.request.use(
-  (config) => {
+  (config: InternalAxiosRequestConfig) => {
     const token = localStorage.getItem('token')
     if (token) {
       config.headers.Authorization = `Bearer ${token}`
     }
     return config
   },
-  (error) => {
+  (error: AxiosError) => {
     return Promise.reject(error)
   }
 )
 
 // Handle response errors
 api.interceptors.response.use(
-  (response) => response,
-  (error) => {
+  (response: AxiosResponse) => response,
+  (error: AxiosError) => {
     if (error.response?.status === 401) {
       // Token expired or invalid, logout user
       localStorage.removeItem('token')
